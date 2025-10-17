@@ -22,7 +22,7 @@ public:
         }
     }
 };
-
+//testing
 int main() {
     DeviceManager manager;
     Device d1 = { 1, "TempSensor", 21.4 };
