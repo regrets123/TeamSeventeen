@@ -21,11 +21,34 @@ public:
             cout << d.id << " - " << d.name << " (" << d.value << ")" << endl;
         }
     }
+
+    void updateValue() {
+        float v;
+        int id;
+        bool check = false;
+        std::cout << "Enter sensor ID :";
+        std::cin >> id;
+        for (auto& d : devices) {
+            if (id == d.id) {
+                std::cout << "Enter new sensor value :";
+                std::cin >> v;
+                d.value = v;
+                check = true;
+            }
+        }
+        if (check == false) {
+            std::cout << "No such sensor.\n";
+        }
+    }
 };
 //testing
 int main() {
     DeviceManager manager;
     Device d1 = { 1, "TempSensor", 21.4 };
+    Device d2 = {2, "HeatSensor", 87.6};
     manager.addDevice(d1);
+    manager.addDevice(d2);
+    manager.printAll();
+    manager.updateValue();
     manager.printAll();
 }
