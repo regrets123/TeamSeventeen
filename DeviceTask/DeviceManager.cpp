@@ -23,6 +23,20 @@ public:
             }
         }
     }
+
+    void findDevice(int id){
+        for (int i = 0; i < devices.size(); i++)
+        {
+            if (devices[i].id == id)
+            {
+                cout << "Found device with name" << devices[i].name << '\n'
+                     << " and value" << devices[i].value << '\n';
+                return;
+            }
+        }
+        cout << "Device not found!" << '\n';
+    }
+
     void printAll() const {
         for (const auto& d : devices) {
             cout << d.id << " - " << d.name << " (" << d.value << ")" << endl;
@@ -51,12 +65,13 @@ public:
 //testing
 int main() {
     DeviceManager manager;
-    Device d1 = { 1, "TempSensor", 21.4 };
+    Device d1 = {1, "TempSensor", 21.4};
     Device d2 = {2, "HeatSensor", 87.6};
     manager.addDevice(d1);
     manager.addDevice(d2);
+    manager.findDevice(1);
     manager.printAll();
-    manager.updateValue();
+    //manager.updateValue();
     manager.printAll();
     // manager.removeDevice(1);
 }
